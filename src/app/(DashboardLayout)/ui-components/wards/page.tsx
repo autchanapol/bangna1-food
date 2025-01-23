@@ -74,7 +74,6 @@ const Wards = () => {
 
 
   const handleSubmit = async () => {
-    // เพิ่มฟังก์ชันที่คุณต้องการทำเมื่อกดปุ่ม OK เช่น ส่งข้อมูล
     console.log("Submitted:", formData);
     if (headStatus == 1) {
 
@@ -84,7 +83,7 @@ const Wards = () => {
                 title: "Validation Error",
                 text: "Ward Name and Remarks are required!",
               });
-              return; // ออกจากฟังก์ชัน หากข้อมูลไม่ถูกต้อง
+              return;
 
           }
           else
@@ -96,7 +95,7 @@ const Wards = () => {
               1,
               1
             );
-            console.log("api res", res.data); // res.data คือข้อมูลที่ได้จาก server
+            console.log("api res", res.data); 
       
             if (res && res.data) {
               const { success, message, wardId } = res.data;
@@ -116,7 +115,7 @@ const Wards = () => {
         formData.remarks,
         1
       );
-      console.log("api res", res.data); // res.data คือข้อมูลที่ได้จาก server
+      console.log("api res", res.data); 
       if (res && res.data) {
         const { success, message, wardId } = res.data;
         if (success) {
@@ -126,7 +125,7 @@ const Wards = () => {
       }
     }
 
-    // ปิด Modal หลังจากกดปุ่ม OK
+  
     setOpen(false); // ปิด Modal
   };
 
@@ -149,23 +148,14 @@ const Wards = () => {
     });
   };
 
-//   const handleModify = (ward) => {
-//     const ward = wardData.find((ward) => ward.id === id); // หา Ward ที่ต้องการแก้ไข
-//     setId(id);
-//     setheadMessage("แก้ไข Ward เลขที่ " + id);
-//     setheadStatus(2);
-//     setFormData({ wardName: ward.wardName, description: ward.remarks }); // ตั้งค่า formData
-//     setOpen(true);
-//   };
-
 const handleModify =  (ward: { id: number; wardName: string; remarks: string; status: number }) => {
     setFormData({
       id: ward.id,
       wardName: ward.wardName,
       remarks: ward.remarks,
     });
-    setheadStatus(0); // ใช้สำหรับการแก้ไข
-    setOpen(true); // เปิด Modal
+    setheadStatus(0); 
+    setOpen(true); 
   };
 
   const handleDelete = async (id: number) => {
@@ -187,13 +177,13 @@ const handleModify =  (ward: { id: number; wardName: string; remarks: string; st
           return;
         }
   
-        const res = await UpdateWard_status(id, 0, 1); // เรียก API เพื่ออัปเดตสถานะ
+        const res = await UpdateWard_status(id, 0, 1); 
         console.log("api res", res.data);
   
         if (res && res.data) {
           const { success, message, wardId } = res.data;
           if (success) {
-            fetchWardData(); // โหลดข้อมูลใหม่หลังจากแก้ไขสำเร็จ
+            fetchWardData();
             showSuccessAlert(message + " ID : " + wardId);
           }
         }
@@ -307,15 +297,15 @@ const handleModify =  (ward: { id: number; wardName: string; remarks: string; st
         id="wardname"
         label="Ward Name"
         variant="standard"
-        value={formData.wardName} // ดึงค่าจาก formData
-        onChange={(e) => setFormData({ ...formData, wardName: e.target.value })} // อัปเดตค่าใน formData
+        value={formData.wardName}
+        onChange={(e) => setFormData({ ...formData, wardName: e.target.value })} 
       />
       <TextField
         id="remarks"
         label="Remarks"
         variant="standard"
-        value={formData.remarks} // ดึงค่าจาก formData
-        onChange={(e) => setFormData({ ...formData, remarks: e.target.value })} // อัปเดตค่าใน formData
+        value={formData.remarks} 
+        onChange={(e) => setFormData({ ...formData, remarks: e.target.value })} 
       />
       <Button
         variant="contained"

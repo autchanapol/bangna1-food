@@ -14,7 +14,7 @@ export default function LoginPage() {
     try {
       const response = await loginUser(username, password); // เรียก API Login
   
-      // เข้าถึงข้อมูลใน response.data
+    
       const data = response.data;
       console.log('API Response:', data); // Debug ข้อมูลที่ได้จาก API
 
@@ -24,13 +24,13 @@ export default function LoginPage() {
         // ตั้งค่า Cookie auth
         document.cookie = 'auth=true; path=/'; // Cookie แบบ Session
       
-        // เก็บ token และข้อมูลเพิ่มเติมใน localStorage
+
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId);
         localStorage.setItem('name', data.name);
         localStorage.setItem('role', data.role);
       
-        // Redirect ไปหน้า Dashboard
+       
         console.log('Redirecting to /ui-components/dashboard');
         // router.push('/ui-components/dashboard');
         window.location.href = '/ui-components/dashboard';
