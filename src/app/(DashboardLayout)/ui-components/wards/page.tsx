@@ -208,6 +208,7 @@ const handleModify =  (ward: { id: number; wardName: string; remarks: string; st
   return (
     
     <Grid container spacing={3}>
+       <h1>Ward Information</h1>
         <div>
              {/* ตัวจัดการแสดง Toast */}
         <ToastContainer />
@@ -297,6 +298,7 @@ const handleModify =  (ward: { id: number; wardName: string; remarks: string; st
   aria-describedby="modal-modal-description"
 >
   <Box sx={style}>
+ 
     <Typography id="modal-modal-title" variant="h6" component="h2">
       Ward Information
     </Typography>

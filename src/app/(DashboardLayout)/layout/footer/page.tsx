@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <Box sx={{ pt: 6, textAlign: "center" }}>
       <Typography>
-        © {new Date().getFullYear()} All rights reserved by{" "}
-        <Link href="https://www.wrappixel.com">
+        © {new Date().getFullYear()} All rights reserved{" "}
+        {/* <Link href="https://www.wrappixel.com">
           Wrappixel.com
-        </Link>{" "}
+        </Link>{" "} */}
       </Typography>
     </Box>
   );

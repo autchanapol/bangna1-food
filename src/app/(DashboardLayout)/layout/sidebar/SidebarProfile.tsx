@@ -1,5 +1,6 @@
 import { Box, Avatar, Typography, useMediaQuery,Tooltip, IconButton } from "@mui/material";
 export const SidebarProfile = () => {
+  const name = localStorage.getItem("name"); 
   return (
     <Box
       sx={{
@@ -30,7 +31,7 @@ export const SidebarProfile = () => {
               overflow: "hidden",
             }}
           >
-            Julia Roberts
+            {name}
           </Typography>
         </Box>
       </>

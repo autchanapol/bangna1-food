@@ -27,6 +27,7 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
     width: '100%',
     color: theme.palette.text.secondary,
   }));
+  const name = localStorage.getItem("name"); 
 
   return (
     <AppBarStyled position="sticky" color="default">
@@ -35,13 +36,13 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
         {/* ------------------------------------------- */}
         {/* Logo */}
         {/* ------------------------------------------- */}
-        <Box sx={{
+        {/* <Box sx={{
             width: '256px',
           }}>
           <Logo />
-        </Box>
+        </Box> */}
 
-        {/* <IconButton
+         <IconButton
           color="inherit"
           aria-label="menu"
           onClick={toggleMobileSidebar}
@@ -54,7 +55,7 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
           }}
         >
           <IconMenu2 width="22" height="22" />
-        </IconButton> */}
+        </IconButton> 
 
         {/* <Search /> */}
 

@@ -9,7 +9,7 @@ const Menuitems = [
     id: uniqueId(),
     title: "Dashboard",
     icon: IconHome,
-    href: "/",
+    href: "/ui-components/dashboard",
   },
   {
     id: uniqueId(),
@@ -53,12 +53,12 @@ const Menuitems = [
   //   icon: IconUser,
   //   href: "/ui-components/pagination",
   // },
-  {
-    id: uniqueId(),
-    title: "Tables",
-    icon: IconLayoutGrid,
-    href: "/ui-components/table",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Tables",
+  //   icon: IconLayoutGrid,
+  //   href: "/ui-components/table",
+  // },
 ];
 
 export default Menuitems;

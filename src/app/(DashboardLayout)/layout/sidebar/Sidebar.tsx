@@ -70,7 +70,7 @@ const Sidebar = ({
       </Box>
     );
   }
-
+  const name = localStorage.getItem("name"); 
   return (
     <Drawer
       anchor="left"

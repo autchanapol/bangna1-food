@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import { useRouter } from "next/navigation"; // Import useRouter
 import Link from "next/link";
 import {
   Box,
@@ -39,6 +40,16 @@ const Profile = () => {
   const errorlight = theme.palette.error.light;
   const success = theme.palette.success.main;
   const successlight = theme.palette.success.light;
+
+  const name = localStorage.getItem("name"); 
+  const handleLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    const router = useRouter();
+    router.push("/login"); // ใช้ router ที่ประกาศไว้ด้านบน
+  };
+  
   return (
     <Box>
       <IconButton
@@ -90,7 +101,7 @@ const Profile = () => {
             <ListItemButton component="a" href="#">
               <ListItemText primary="My Profile" />
             </ListItemButton>
-            <ListItemButton component="a" href="#">
+            {/* <ListItemButton component="a" href="#">
               <ListItemText primary="My Account" />
             </ListItemButton>
             <ListItemButton component="a" href="#">
@@ -98,13 +109,15 @@ const Profile = () => {
             </ListItemButton>
             <ListItemButton component="a" href="#">
               <ListItemText primary="My Task" />
-            </ListItemButton>
+            </ListItemButton> */}
           </List>
 
         </Box>
         <Divider />
         <Box mt={2}>
-          <Button fullWidth variant="contained" color="primary">
+          <Button fullWidth variant="contained" color="primary"
+           onClick={handleLogout}
+          >
             Logout
           </Button>
         </Box>

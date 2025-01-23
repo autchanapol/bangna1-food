@@ -26,7 +26,12 @@ export const loginUser = async (username, password) => {
 
 export const getWard = async () => {
   try {
-    const res = await api.get("api/Wards/GetWards", {});
+    const token = localStorage.getItem("token");
+    const res = await api.get("api/Wards/GetWards", {
+      headers: {
+        Authorization: `Bearer ${token}`, // เพิ่ม Token ใน Header
+      },
+    });
     return res; 
   } catch (error) {
     console.error("getWard error:", error);
@@ -36,27 +41,46 @@ export const getWard = async () => {
 
 export const InsertWards = async (WardName, Remarks, Status, CreatedBy) => {
   try {
-    const res = await api.post("api/Wards/InsertWard", {
-      WardName,
-      Remarks,
-      Status,
-      CreatedBy,
-    });
+    const token = localStorage.getItem("token"); 
+
+    const res = await api.post(
+      "api/Wards/InsertWard",
+      {
+        WardName,
+        Remarks,
+        Status,
+        CreatedBy,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      }
+    );
+
     return res; 
   } catch (error) {
-    console.error("UpdateWard error:", error);
-    throw error; 
+    console.error("InsertWards error:", error);
+    throw error; // โยนข้อผิดพลาดกลับไป
   }
 };
 
 export const UpdateWard = async (Id, WardName, Remarks, UpdateBy) => {
   try {
-    const res = await api.post("api/Wards/UpdateWard", {
+    const token = localStorage.getItem("token"); 
+    const res = await api.post("api/Wards/UpdateWard", 
+      {
       Id,
       WardName,
       Remarks,
       UpdateBy,
-    });
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      }
+  );
     return res; 
   } catch (error) {
     console.error("UpdateWard error:", error);
@@ -66,11 +90,19 @@ export const UpdateWard = async (Id, WardName, Remarks, UpdateBy) => {
 
 export const UpdateWard_status = async (Id, Status, UpdateBy) => {
   try {
-    const res = await api.post("api/Wards/UpdateWard", {
+    const token = localStorage.getItem("token"); 
+    const res = await api.post("api/Wards/UpdateWard", 
+      {
       Id,
       Status,
       UpdateBy,
-    });
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      }
+  );
     return res; 
   } catch (error) {
     console.error("Login error:", error);
